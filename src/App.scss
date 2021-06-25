@@ -1,5 +1,8 @@
-/* CSS */
-@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5.2/distr/fira_code.css);
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {
+  font-family: 'Fira Sans', sans-serif;
+}
 
 .App {
   text-align: center;
@@ -43,7 +46,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Fira Code', monospace;
   font-size: calc(10px + 2vmin);
   color: white;
 }
