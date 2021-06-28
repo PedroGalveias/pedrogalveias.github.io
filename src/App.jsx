@@ -10,23 +10,23 @@ import {useState} from "react";
 
 function App() {
     const [menuOpen, setMenuOpen] = useState(false);
-  return (
-    <div className="App">
-        <Topbar menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
-        <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
-        <Menu/>
-        <div className="sections">
-          <Intro/>
-          <Portfolio/>
-          <Testimonials/>
-          <Works/>
-          <Contact/>
+    return (
+        <div className="App">
+            <Topbar menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
+            <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
+            <Menu/>
+            <div className="sections">
+                <Intro/>
+                <Portfolio/>
+                <Testimonials/>
+                <Works/>
+                <Contact/>
+            </div>
+            <p>
+                Hello World!
+            </p>
         </div>
-        <p>
-          Hello World!
-        </p>
-    </div>
-  );
+    );
 }
 
 export default App;

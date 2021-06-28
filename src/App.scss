@@ -15,12 +15,12 @@ body {
     position: relative;
     top: 70px;
     scroll-snap-type: y mandatory;
-    scrollbar-width: none;          // for firefox
-    &::-webkit-scrollbar{
+    scrollbar-width: none; // for firefox
+    &::-webkit-scrollbar {
       display: none;
     }
 
-    > *{
+    > * {
       width: 100vw;
       height: calc(100vh - 70px);
       scroll-snap-align: start;

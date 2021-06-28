@@ -1,33 +1,74 @@
 import './portfolio.scss'
+import PortfolioList from '../portfolioList/PortfolioList';
+import {useEffect, useState} from 'react';
+import {bachelorProjData, blockchainDevData, otherData, uniProjsData} from '../../portfolioData';
 
 export default function Portfolio() {
+    const [selected, setSelected] = useState("blockchainDev");
+    const [data, setData] = useState([]);
+
+    const list = [
+        {
+            id: "blockchainDev",
+            title: "Blockchain Dev"
+        },
+        {
+            id: "bachelorProj",
+            title: "Bachelor Project"
+        },
+        {
+            id: "uniProjs",
+            title: "Uni Projects"
+        },
+        {
+            id: "other",
+            title: "Other"
+        }
+    ]
+
+    useEffect(() => {
+        switch (selected) {
+            case "blockchainDev":
+                setData(blockchainDevData);
+                break;
+
+            case "bachelorProj":
+                setData(bachelorProjData);
+                break;
+
+            case "uniProjs":
+                setData(uniProjsData);
+                break;
+
+            case "other":
+                setData(otherData);
+                break;
+
+            default:
+                setData(blockchainDevData);
+                break;
+        }
+    }, [selected]);
+
     return (
         <div className="portfolio" id="portfolio">
             <h1>Portfolio</h1>
             <ul>
-                <li className="active">Ethereum</li>
-                <li>Blockchain Dev</li>
-                <li>Bachelor's Project</li>
-                <li>Uni Projects</li>
-                <li>Other</li>
+                {list.map(item => (
+                    <PortfolioList title={item.title} active={selected === item.id} setSelected={setSelected}
+                                   id={item.id}/>
+                ))}
             </ul>
             <div className="container">
-                <div className="item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/256px-Ethereum_logo_2014.svg.png" alt=""/>
-                    <h3>Blockchain</h3>
-                </div>
-                <div className="item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/256px-Ethereum_logo_2014.svg.png" alt=""/>
-                    <h3>Blockchain</h3>
-                </div>
-                <div className="item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/256px-Ethereum_logo_2014.svg.png" alt=""/>
-                    <h3>Blockchain</h3>
-                </div>
-                <div className="item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/256px-Ethereum_logo_2014.svg.png" alt=""/>
-                    <h3>Blockchain</h3>
-                </div>
+                {data.map((d) => (
+                    <div className="item">
+                        <img
+                            src={d.img}
+                            alt=""
+                        />
+                        <h3>{d.title}</h3>
+                    </div>
+                ))};
             </div>
         </div>
     )
